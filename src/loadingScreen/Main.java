@@ -19,7 +19,7 @@ public class Main extends Application {
 			Scene scene = new Scene(root,1200,800);
 			scene.getStylesheets().add(getClass().getResource("loadingScreen.css").toExternalForm());
 			primaryStage.setScene(scene);
-			new FadeIn(root).setSpeed(0.2).play();
+			//new FadeIn(root).setSpeed(0.2).play();
 			primaryStage.show();
 			
 		} 
