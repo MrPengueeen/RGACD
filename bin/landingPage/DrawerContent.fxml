@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<VBox fx:id="vbox" alignment="TOP_CENTER" minHeight="-Infinity" minWidth="-Infinity" spacing="8.0" style="-fx-background-color: #ffbf80;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ImageView fitHeight="150.0" fitWidth="226.0" pickOnBounds="true" preserveRatio="true" style="-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);">
+         <image>
+            <Image url="file:/F:/Java%20and%20JavaFX%20Eclipse%20Projects/RGACD/src/images/logoNoBack.png" />
+         </image>
+         <VBox.margin>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </VBox.margin>
+      </ImageView>
+      <JFXButton prefHeight="51.0" prefWidth="236.0" style="-fx-border-radius: 10; -fx-border-color: ffffff;" text="Add Category" textAlignment="CENTER">
+         <padding>
+            <Insets left="5.0" right="5.0" top="5.0" />
+         </padding>
+      </JFXButton>
+      <JFXButton prefHeight="51.0" prefWidth="236.0" style="-fx-border-radius: 10; -fx-border-color: ffffff;" text="Edit Category" textAlignment="CENTER">
+         <padding>
+            <Insets left="5.0" right="5.0" top="5.0" />
+         </padding>
+      </JFXButton>
+      <JFXButton prefHeight="51.0" prefWidth="236.0" style="-fx-border-radius: 10; -fx-border-color: ffffff;" text="About" textAlignment="CENTER">
+         <padding>
+            <Insets left="5.0" right="5.0" top="5.0" />
+         </padding>
+      </JFXButton>
+      <JFXButton prefHeight="51.0" prefWidth="236.0" style="-fx-border-radius: 10; -fx-border-color: ffffff;" text="Exit" textAlignment="CENTER">
+         <padding>
+            <Insets left="5.0" right="5.0" top="5.0" />
+         </padding>
+      </JFXButton>
+   </children>
+   <padding>
+      <Insets bottom="30.0" />
+   </padding>
+</VBox>

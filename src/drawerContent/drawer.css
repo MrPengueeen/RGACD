@@ -1,0 +1,15 @@
+.button:hover {
+	-fx-background-color: #ffbf80;
+}
+
+.button:pressed {
+	-fx-scale-y: 1.3;
+	-fx-scale-x: 1.0;
+}
+
+
+.button {
+	-fx-font-weight: bold;
+	-fx-font-family: "sans-serif";
+	-fx-font-size: 14;
+}

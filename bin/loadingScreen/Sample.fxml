@@ -10,43 +10,52 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #ffbf80;" stylesheets="@loadingScreen.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="loadingScreen.SampleController">
-   <center>
-      <VBox fx:id="vbox" alignment="CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
-         <children>
-            <ImageView fx:id="image" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" style="-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);">
-               <image>
-                  <Image url="file:/F:/Java%20and%20JavaFX%20Eclipse%20Projects/RGACD/src/images/logoNoBack.png" />
-               </image>
-            </ImageView>
-            <Label alignment="CENTER" text="Research Group to Aid Child Development" textAlignment="CENTER" wrapText="true" />
-            <HBox alignment="CENTER" prefHeight="31.0" prefWidth="600.0">
+
+<AnchorPane fx:id="parentPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="loadingScreen.SampleController">
+   <children>
+      <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #ffbf80;" stylesheets="@loadingScreen.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <center>
+            <VBox fx:id="vbox" alignment="CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
                <children>
-                  <Circle fx:id="loadCircle1" fill="#1f93ff00" radius="3.0" stroke="#008e97" strokeType="OUTSIDE" strokeWidth="4.0">
-                     <HBox.margin>
-                        <Insets bottom="8.0" left="8.0" right="8.0" />
-                     </HBox.margin></Circle>
-                  <Circle fx:id="loadCircle2" fill="#1f93ff00" radius="3.0" stroke="#f58220" strokeType="OUTSIDE" strokeWidth="4.0">
-                     <HBox.margin>
-                        <Insets bottom="8.0" left="8.0" right="8.0" />
-                     </HBox.margin></Circle>
-                  <Circle fx:id="loadCircle3" fill="#1f93ff00" radius="3.0" stroke="#008e97" strokeType="OUTSIDE" strokeWidth="4.0">
-                     <HBox.margin>
-                        <Insets bottom="8.0" left="8.0" right="8.0" />
-                     </HBox.margin></Circle>
-                  <Circle fx:id="loadCircle4" fill="#1f93ff00" radius="3.0" stroke="#f58220" strokeType="OUTSIDE" strokeWidth="4.0">
-                     <HBox.margin>
-                        <Insets bottom="8.0" left="8.0" right="8.0" />
-                     </HBox.margin></Circle>
+                  <ImageView fx:id="image" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" style="-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);">
+                     <image>
+                        <Image url="file:/F:/Java%20and%20JavaFX%20Eclipse%20Projects/RGACD/src/images/logoNoBack.png" />
+                     </image>
+                  </ImageView>
+                  <Label alignment="CENTER" text="Research Group to Aid Child Development" textAlignment="CENTER" wrapText="true" />
+                  <HBox alignment="CENTER" prefHeight="31.0" prefWidth="600.0">
+                     <children>
+                        <Circle fx:id="loadCircle1" fill="#1f93ff00" radius="3.0" stroke="#008e97" strokeType="OUTSIDE" strokeWidth="4.0">
+                           <HBox.margin>
+                              <Insets bottom="8.0" left="8.0" right="8.0" />
+                           </HBox.margin>
+                        </Circle>
+                        <Circle fx:id="loadCircle2" fill="#1f93ff00" radius="3.0" stroke="#f58220" strokeType="OUTSIDE" strokeWidth="4.0">
+                           <HBox.margin>
+                              <Insets bottom="8.0" left="8.0" right="8.0" />
+                           </HBox.margin>
+                        </Circle>
+                        <Circle fx:id="loadCircle3" fill="#1f93ff00" radius="3.0" stroke="#008e97" strokeType="OUTSIDE" strokeWidth="4.0">
+                           <HBox.margin>
+                              <Insets bottom="8.0" left="8.0" right="8.0" />
+                           </HBox.margin>
+                        </Circle>
+                        <Circle fx:id="loadCircle4" fill="#1f93ff00" radius="3.0" stroke="#f58220" strokeType="OUTSIDE" strokeWidth="4.0">
+                           <HBox.margin>
+                              <Insets bottom="8.0" left="8.0" right="8.0" />
+                           </HBox.margin>
+                        </Circle>
+                     </children>
+                     <padding>
+                        <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                     </padding>
+                     <VBox.margin>
+                        <Insets bottom="20.0" left="20.0" right="20.0" top="50.0" />
+                     </VBox.margin>
+                  </HBox>
                </children>
-               <padding>
-                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
-               </padding>
-               <VBox.margin>
-                  <Insets bottom="20.0" left="20.0" right="20.0" top="50.0" />
-               </VBox.margin>
-            </HBox>
-         </children>
-      </VBox>
-   </center>
-</BorderPane>
+            </VBox>
+         </center>
+      </BorderPane>
+   </children>
+</AnchorPane>
