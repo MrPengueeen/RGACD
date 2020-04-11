@@ -7,6 +7,8 @@ import java.util.ResourceBundle;
 import animatefx.animation.AnimationFX;
 import animatefx.animation.Bounce;
 import animatefx.animation.FadeIn;
+import animatefx.animation.SlideInLeft;
+import animatefx.animation.SlideInRight;
 import animatefx.animation.Tada;
 import animatefx.animation.Wobble;
 import animatefx.animation.ZoomIn;
@@ -60,7 +62,7 @@ public class SampleController implements Initializable {
 				
 			
 				parentPane.getChildren().setAll(landingPage);
-				new FadeIn(landingPage).setSpeed(0.3).play();
+				new SlideInLeft(landingPage).setSpeed(0.8).play();
 				parentPane.setTopAnchor(landingPage, 0.0);
 				parentPane.setRightAnchor(landingPage, 0.0);
 				parentPane.setBottomAnchor(landingPage, 0.0);

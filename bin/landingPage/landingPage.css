@@ -1,0 +1,10 @@
+bigButton:hover {
+	-fx-background-color: black;
+	
+	}
+	
+	
+.button:pressed {
+	-fx-scale-y: 1.2;
+	-fx-scale-x: 1.2;
+}

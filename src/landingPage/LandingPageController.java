@@ -8,12 +8,19 @@ import com.jfoenix.controls.JFXDrawer;
 import com.jfoenix.controls.JFXHamburger;
 import com.jfoenix.transitions.hamburger.HamburgerBackArrowBasicTransition;
 
+import animatefx.animation.SlideInLeft;
+import animatefx.animation.SlideInRight;
+import animatefx.animation.ZoomIn;
+import animatefx.animation.ZoomInRight;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.MenuBar;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import loadingScreen.Main;
 
@@ -25,6 +32,11 @@ public class LandingPageController implements Initializable {
 	VBox vbox;
 	@FXML
 	JFXHamburger hamburger;
+	@FXML
+	AnchorPane parentPane;
+	@FXML 
+	HBox modes, menubar;
+	
 	
 	
 	@Override
@@ -44,8 +56,14 @@ public class LandingPageController implements Initializable {
 			
 			if(drawer.isClosed()) {
 				drawer.open();
+				new ZoomIn(modes).play();
+				parentPane.setLeftAnchor(modes, 300.0);
+				parentPane.setLeftAnchor(menubar, 300.0);
 			} else {
 				drawer.close();
+				new ZoomIn(modes).play();
+				parentPane.setLeftAnchor(modes, 0.0);
+				parentPane.setLeftAnchor(menubar, 0.0);
 			}
 			hamTrans.setRate(hamTrans.getRate() * -1);
 			hamTrans.play();

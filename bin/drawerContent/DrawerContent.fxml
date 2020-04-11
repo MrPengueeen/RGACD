@@ -19,7 +19,7 @@
          </VBox.margin>
       </ImageView>
       <Region prefHeight="88.0" prefWidth="281.0" />
-      <JFXButton alignment="CENTER" graphicTextGap="20.0" prefHeight="42.0" prefWidth="287.0" style="-fx-border-radius: 10;" text="Add Category" textAlignment="CENTER">
+      <JFXButton alignment="CENTER" graphicTextGap="30.0" prefHeight="42.0" prefWidth="287.0" style="-fx-border-radius: 10;" text="Add Category" textAlignment="CENTER">
          <padding>
             <Insets left="5.0" right="5.0" top="5.0" />
          </padding>
@@ -37,7 +37,7 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton alignment="CENTER" graphicTextGap="20.0" prefHeight="44.0" prefWidth="281.0" style="-fx-border-radius: 10;" text="Edit Category" textAlignment="CENTER">
+      <JFXButton alignment="CENTER" graphicTextGap="30.0" prefHeight="44.0" prefWidth="281.0" style="-fx-border-radius: 10;" text="Edit Category" textAlignment="CENTER">
          <padding>
             <Insets left="5.0" right="5.0" top="5.0" />
          </padding>
@@ -55,7 +55,7 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton alignment="CENTER" graphicTextGap="20.0" prefHeight="46.0" prefWidth="290.0" style="-fx-border-radius: 10;" text="About" textAlignment="CENTER">
+      <JFXButton alignment="CENTER" graphicTextGap="30.0" prefHeight="46.0" prefWidth="290.0" style="-fx-border-radius: 10;" text="About" textAlignment="CENTER">
          <padding>
             <Insets left="5.0" right="5.0" top="5.0" />
          </padding>
@@ -73,7 +73,7 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton alignment="CENTER" graphicTextGap="20.0" prefHeight="48.0" prefWidth="288.0" style="-fx-border-radius: 10;" text="Exit" textAlignment="CENTER">
+      <JFXButton alignment="CENTER" graphicTextGap="30.0" prefHeight="48.0" prefWidth="288.0" style="-fx-border-radius: 10;" text="Exit" textAlignment="CENTER">
          <padding>
             <Insets left="5.0" right="5.0" top="5.0" />
          </padding>
