@@ -1,16 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.image.*?>
-<?import javafx.scene.shape.*?>
-<?import javafx.scene.text.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.geometry.*?>
-<?import com.jfoenix.controls.*?>
-<?import java.lang.*?>
-<?import javafx.scene.layout.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXDrawer?>
+<?import com.jfoenix.controls.JFXHamburger?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="798.0" prefWidth="1060.0" style="-fx-background-color: #ffbf80;" stylesheets="@landingPage.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="landingPage.LandingPageController">
+<AnchorPane fx:id="landingPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="798.0" prefWidth="1060.0" style="-fx-background-color: #ffbf80;" stylesheets="@landingPage.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="landingPage.LandingPageController">
    <children>
       <JFXDrawer fx:id="drawer" defaultDrawerSize="250.0" prefHeight="400.0" prefWidth="164.0" style="-fx-background-color: #ffbf80;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
       <HBox alignment="CENTER_RIGHT" layoutX="164.0" prefHeight="47.0" prefWidth="200.0" spacing="10.0" AnchorPane.leftAnchor="164.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -28,7 +32,7 @@
          <children>
             <VBox alignment="CENTER" spacing="10.0" HBox.hgrow="ALWAYS">
                <children>
-                  <JFXButton id="bigButton" alignment="CENTER" contentDisplay="CENTER" prefHeight="400.0" prefWidth="400.0" style="-fx-background-color: #ffe6cc; -fx-background-radius: 50; -fx-cursor: hand;" stylesheets="@landingPage.css" textFill="TRANSPARENT">
+                  <JFXButton id="bigButton" fx:id="learnButton" alignment="CENTER" contentDisplay="CENTER" prefHeight="400.0" prefWidth="400.0" style="-fx-background-color: #ffe6cc; -fx-background-radius: 50; -fx-cursor: hand;" stylesheets="@landingPage.css" textFill="TRANSPARENT">
                      <graphic>
                         <ImageView fitHeight="230.0" fitWidth="210.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -66,18 +70,14 @@
       </HBox>
       <HBox fx:id="menubar" alignment="CENTER" layoutX="309.0" layoutY="84.0" prefHeight="75.0" prefWidth="187.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="200.0">
          <children>
-            <MenuButton alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="74.0" prefWidth="278.0" style="-fx-background-color: #ffe6cc;" text="Category">
-              <items>
-                <MenuItem mnemonicParsing="false" text="Action 1" />
-                <MenuItem mnemonicParsing="false" text="Action 2" />
-              </items>
-               <font>
-                  <Font size="25.0" />
-               </font>
-               <padding>
-                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-               </padding>
-            </MenuButton>
+            <JFXComboBox fx:id="category" focusColor="BLACK" prefHeight="41.0" prefWidth="158.0" promptText="Categories" style="-fx-background-color: ffe6cc;" unFocusColor="WHITE">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <effect>
+                  <DropShadow blurType="ONE_PASS_BOX" color="#9a8585" />
+               </effect>
+            </JFXComboBox>
          </children>
       </HBox>
    </children>
