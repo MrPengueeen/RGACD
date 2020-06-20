@@ -31,6 +31,8 @@ import animatefx.animation.SlideInLeft;
 import animatefx.animation.SlideInRight;
 import animatefx.animation.ZoomIn;
 import animatefx.animation.ZoomInRight;
+import dialogsAndNotifications.SetFileDirectory;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableArray;
 import javafx.collections.ObservableList;
@@ -48,6 +50,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import loadingScreen.Main;
 import mediaPage.MediaPageController;
@@ -72,19 +75,39 @@ public class LandingPageController implements Initializable {
 	@FXML
 	JFXComboBox<String> category;
 	
+	String selectedPath = "";
+	boolean threadRunner = true;
+	
 	
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resource) {
 		
 		checkForMainDirectory();
-		String categoryCsvPath = new File(Utils.getMainDir() + "\\Categories\\Categories.csv").getAbsolutePath();
-		
-		try {
-			loadCategoriesToMenuButton(categoryCsvPath);
-		} catch (FileNotFoundException e2) {
-			e2.printStackTrace();
-		}
+		Thread categoryThread = new Thread(() -> {
+			
+			while(threadRunner) {
+				try {
+					Thread.sleep(1000);
+				} catch (InterruptedException e1) {
+					e1.printStackTrace();
+				}
+				Platform.runLater(() -> {
+					try {
+						String categoryCsvPath = new File(Utils.getMainDir() + "\\RGACD\\Categories\\Categories.csv").getAbsolutePath();
+						loadCategoriesToMenuButton(categoryCsvPath);
+					} catch (FileNotFoundException e2) {
+						e2.printStackTrace();
+					}
+				});
+			}
+		});
+		categoryThread.start();
+//		try {
+//			loadCategoriesToMenuButton(categoryCsvPath);
+//		} catch (FileNotFoundException e2) {
+//			e2.printStackTrace();
+//		}
 		
 		
 		
@@ -118,6 +141,7 @@ public class LandingPageController implements Initializable {
 		learnButton.setOnAction( e -> {
 			try {
 				loadMediaPage();
+				threadRunner = false;
 			} catch (IOException e1) {
 				e1.printStackTrace();
 			}
@@ -181,19 +205,33 @@ public class LandingPageController implements Initializable {
 			System.out.println("Exists!");
 		} else {
 			System.out.println("Doesn't exist! Generating config file");
-			Properties propertyFile = new Properties();
-			propertyFile.setProperty("Directory","F:\\RGACD Test Directory");
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/dialogsAndNotifications/SetFileDirectory.fxml"));
 			try {
-				configFile.getParentFile().mkdirs();
-				FileOutputStream fileOut = new FileOutputStream(configFile);
-				propertyFile.store(fileOut, "RGACD APPLICATION CONFIG FILE");
-				fileOut.close();
-				System.out.println("Config file generation complete!");
-			} catch (FileNotFoundException e) {
-				e.printStackTrace();
-			} catch (IOException e) {
-				e.printStackTrace();
+				AnchorPane pane =  loader.load();
+				SetFileDirectory setFileDirectory = loader.getController();
+				Stage directoryStage = new Stage();
+				Scene directoryScene = new Scene(pane);
+				directoryStage.setScene(directoryScene);
+				directoryStage.initModality(Modality.APPLICATION_MODAL);
+				directoryStage.show();
+				selectedPath = setFileDirectory.getDirectoryPath();
+			} catch (IOException e1) {
+				e1.printStackTrace();
 			}
+			
+//			Properties propertyFile = new Properties();
+//			propertyFile.setProperty("Directory", selectedPath);
+//			try {
+//				configFile.getParentFile().mkdirs();
+//				FileOutputStream fileOut = new FileOutputStream(configFile);
+//				propertyFile.store(fileOut, "RGACD APPLICATION CONFIG FILE");
+//				fileOut.close();
+//				System.out.println("Config file generation complete!");
+//			} catch (FileNotFoundException e) {
+//				e.printStackTrace();
+//			} catch (IOException e) {
+//				e.printStackTrace();
+//			}
 			
 		}
 	}

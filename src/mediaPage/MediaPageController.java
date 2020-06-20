@@ -109,7 +109,7 @@ public class MediaPageController implements Initializable {
 //		
 //		String mainDir = property.getProperty("Directory");
 //		fileInput.close();
-		String path = Utils.getMainDir() + "\\Categories\\" + category + "\\" + category + ".csv";
+		String path = Utils.getMainDir() + "\\RGACD\\Categories\\" + category + "\\" + category + ".csv";
 		Reader reader = Files.newBufferedReader(Paths.get(path));
 		
 		Iterable<CSVRecord> records = CSVFormat.DEFAULT.withHeader("RFID", "Name").parse(reader);
@@ -138,7 +138,7 @@ public class MediaPageController implements Initializable {
 //			
 //			String mainDir = property.getProperty("Directory");
 //			fileInput.close();
-			String path = new File(Utils.getMainDir() + "\\Categories\\" + category + "\\" + rfid + "\\video.mp4").getAbsolutePath();
+			String path = new File(Utils.getMainDir() + "\\RGACD\\Categories\\" + category + "\\" + rfid + "\\video.mp4").getAbsolutePath();
 			Media media = new Media(new File(path).toURI().toString());
 			MediaPlayer mediaPlayer = new MediaPlayer(media);
 			mv.setMediaPlayer(mediaPlayer);
