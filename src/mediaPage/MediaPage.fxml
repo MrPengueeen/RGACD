@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane fx:id="mediaPageRoot" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="387.0" prefWidth="577.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mediaPage.MediaPageController">
+<BorderPane fx:id="mediaPageRoot" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="387.0" prefWidth="577.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <top>
       <HBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="200.0" spacing="10.0" style="-fx-background-color: red;" BorderPane.alignment="CENTER">
          <children>

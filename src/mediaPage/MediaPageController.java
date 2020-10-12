@@ -2,8 +2,11 @@ package mediaPage;
 
 
 
+import com.fazecast.jSerialComm.SerialPort;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
+
+import arduino.Arduino;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -21,6 +24,7 @@ import org.apache.commons.csv.CSVRecord;
 import javafx.beans.binding.Bindings;
 import javafx.beans.property.DoubleProperty;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -57,36 +61,57 @@ public class MediaPageController implements Initializable {
     
     
     
-    private String category, rfid, name;
+    private String category, rfid, name, rfidTag;
+    
+    public MediaPageController(String category, String rfid) {
+    	this.category = category;
+    	this.rfid =  rfid;
+    }
 
 	@Override
 	public void initialize(URL location, ResourceBundle resource) {
 		
+		System.out.println("Category: " + category);
+		System.out.println("RFID: " + rfid);
+		
+		try {
+			if(readCsv(rfid)) {
+				System.out.println("Selected: " + name);
+				playMedia();
+			} else {
+				System.out.println("No such RFID found!");
+			}
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		} catch (Exception e1) {
+			e1.printStackTrace();
+		}
+		//arduinoCommunication(category);
 		
 		
 		//mediaPageRoot.prefWidthProperty().bind();
 		
 		
-		button.setOnAction( e -> {
-			//category = categoryInput.getText();
-			rfid = rfidInput.getText();
-			System.out.println("Category: " + category);
-			System.out.println("RFID: " + rfid);
-			
-			try {
-				if(readCsv(rfid)) {
-					System.out.println("Selected: " + name);
-					playMedia();
-				} else {
-					System.out.println("No such RFID found!");
-				}
-			} catch (IOException e1) {
-				e1.printStackTrace();
-			} catch (Exception e1) {
-				e1.printStackTrace();
-			}
-			
-		});
+//		button.setOnAction( e -> {
+//			//category = categoryInput.getText();
+//			//rfid = rfidInput.getText();
+//			System.out.println("Category: " + category);
+//			System.out.println("RFID: " + rfid);
+//			
+//			try {
+//				if(readCsv(rfid)) {
+//					System.out.println("Selected: " + name);
+//					playMedia();
+//				} else {
+//					System.out.println("No such RFID found!");
+//				}
+//			} catch (IOException e1) {
+//				e1.printStackTrace();
+//			} catch (Exception e1) {
+//				e1.printStackTrace();
+//			}
+//			
+//		});
 	}
 	
 	public void setCategory(String cat) {
@@ -147,10 +172,71 @@ public class MediaPageController implements Initializable {
 			DoubleProperty height = mv.fitHeightProperty();
 			width.bind(Bindings.selectDouble(mv.sceneProperty(), "width" ));
 			height.bind(Bindings.selectDouble(mv.sceneProperty(), "height" ));
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
 	}
+	
+	private void arduinoCommunication(String category) {
+		
+		System.out.println("Arduino communication Started");
+		SerialPort[] portNames = SerialPort.getCommPorts();
+		System.out.println("All com ports: ");
+		for(SerialPort x : portNames) {
+			System.out.println(x.getSystemPortName());
+		}
+		
+		String rgacdPort = portNames[0].getSystemPortName();
+		
+		
+		Arduino arduino =  new Arduino();
+		arduino.setPortDescription(rgacdPort);
+		arduino.setBaudRate(9600);
+		
+		arduino.openConnection();
+
+		while(arduino.openConnection()) {
+			rfidTag = arduino.serialRead().replaceAll("[\\n\\t ]", "");
+			//updateText.setText("Recieved String from Arduino: " + rfidTag);
+			
+			if(rfidTag.length() == 5) {
+				break;
+			}
+			
+			}
+		
+		
+		
+		arduino.closeConnection();
+		System.out.println("Connection closed!");
+		System.out.println(category);
+		System.out.println(rfidTag);
+		//threadRunner = false;
+		try {
+			loadMediaPage();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	private void loadMediaPage() throws Exception {
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/mediaPage/MediaPage.fxml"));
+		MediaPageController mediaPageController = new MediaPageController(category, rfidTag);
+		loader.setController(mediaPageController);
+		BorderPane mediaPage =  loader.load();
+//		MediaPageController mediaPageController = loader.getController();
+//		mediaPageController.setCategory(getCategory());
+//		mediaPageController.setRfid(rfidTag);
+		
+		
+		mediaPage.prefHeightProperty().bind(mediaPageRoot.heightProperty());
+		mediaPage.prefWidthProperty().bind(mediaPageRoot.widthProperty());
+		mediaPageRoot.getChildren().setAll(mediaPage);
+	}
+	
+	
    
 }

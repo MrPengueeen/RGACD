@@ -31,6 +31,7 @@ import animatefx.animation.SlideInLeft;
 import animatefx.animation.SlideInRight;
 import animatefx.animation.ZoomIn;
 import animatefx.animation.ZoomInRight;
+import arduinoCommunicationPage.ArduinoPageController;
 import dialogsAndNotifications.SetFileDirectory;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
@@ -140,7 +141,7 @@ public class LandingPageController implements Initializable {
 		
 		learnButton.setOnAction( e -> {
 			try {
-				loadMediaPage();
+				loadCommunicationPage();
 				threadRunner = false;
 			} catch (IOException e1) {
 				e1.printStackTrace();
@@ -154,18 +155,23 @@ public class LandingPageController implements Initializable {
 	}
 	
 	@FXML
-	public void loadMediaPage() throws IOException {
+	public void loadCommunicationPage() throws IOException {
 		String categorySelected = category.getSelectionModel().getSelectedItem().toString();
 		//BorderPane mediaPage =  FXMLLoader.load(getClass().getResource("/mediaPage/MediaPage.fxml"));
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("/mediaPage/MediaPage.fxml"));
-		BorderPane mediaPage =  loader.load();
-		MediaPageController mediaPageController = loader.getController();
-		mediaPageController.setCategory(categorySelected);
+		
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/arduinoCommunicationPage/ArduinoCommunicationPage.fxml"));
+		
+		ArduinoPageController arduinoPageController = new ArduinoPageController(categorySelected);
+		loader.setController(arduinoPageController);
+		BorderPane arduinoPage =  loader.load();
+		//arduinoPageController.setCategory(categorySelected);
 		
 		
-		mediaPage.prefHeightProperty().bind(landingPane.heightProperty());
-		mediaPage.prefWidthProperty().bind(landingPane.widthProperty());
-		landingPane.getChildren().setAll(mediaPage);
+		
+		
+		arduinoPage.prefHeightProperty().bind(landingPane.heightProperty());
+		arduinoPage.prefWidthProperty().bind(landingPane.widthProperty());
+		landingPane.getChildren().setAll(arduinoPage);
 		System.out.println("Button Pressed!");
 		System.out.println("Category Selected: " + categorySelected);
 		
