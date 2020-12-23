@@ -142,10 +142,10 @@ public class ArduinoPageController implements Initializable {
 
 		while(arduino.openConnection()) {
 			rfidTag = arduino.serialRead().replaceAll("[\\n\\t ]", "");
-			System.out.println(rfidTag);
+			System.out.println("Scanned Tag: " + rfidTag);
 			updateText.setText("Recieved String from Arduino: " + rfidTag);
 			
-			if(rfidTag.length() == 5) {
+			if(rfidTag.length() == 8) {
 				break;
 			}
 			
